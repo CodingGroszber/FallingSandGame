@@ -1,0 +1,68 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\CSharpCourse\\Raylib\\RayLibWorkspaces\\FallingSandGame\\FallingSandGame\\FallingSandGame\\FallingSandGame.csproj": {}
+  },
+  "projects": {
+    "D:\\CSharpCourse\\Raylib\\RayLibWorkspaces\\FallingSandGame\\FallingSandGame\\FallingSandGame\\FallingSandGame.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\CSharpCourse\\Raylib\\RayLibWorkspaces\\FallingSandGame\\FallingSandGame\\FallingSandGame\\FallingSandGame.csproj",
+        "projectName": "FallingSandGame",
+        "projectPath": "D:\\CSharpCourse\\Raylib\\RayLibWorkspaces\\FallingSandGame\\FallingSandGame\\FallingSandGame\\FallingSandGame.csproj",
+        "packagesPath": "C:\\Users\\z004c8cj\\.nuget\\packages\\",
+        "outputPath": "D:\\CSharpCourse\\Raylib\\RayLibWorkspaces\\FallingSandGame\\FallingSandGame\\FallingSandGame\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\z004c8cj\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
