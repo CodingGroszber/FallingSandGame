@@ -1,8 +1,7 @@
 ﻿using System;
 using Raylib_cs;
 
-namespace FallingSandGame
-{
+
     class Program
     {
         static void Main()
@@ -11,9 +10,15 @@ namespace FallingSandGame
             const int screenHeight = 600;
             const int cellSize = 5; // Size of each cell (pixel)
 
-            FallingSand fallingSand = new FallingSand(screenWidth, screenHeight, cellSize);
-            fallingSand.Run();
+            try
+            {
+                FallingSand fallingSand = new FallingSand(screenWidth, screenHeight, cellSize);
+                fallingSand.Run();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
         }
     }
-}
 

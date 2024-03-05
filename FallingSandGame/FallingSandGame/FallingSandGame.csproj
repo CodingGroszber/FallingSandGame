@@ -9,8 +9,14 @@
 
   <ItemGroup>
     <Reference Include="Raylib-cs">
-      <HintPath>..\..\..\..\Raylib-cs\Raylib-cs\bin\Debug\net6.0\Raylib-cs.dll</HintPath>
+      <HintPath>"D:\Laci\GitPlayground\FallingSandGame\FallingSandGame\FallingSandGame\bin\Debug\net6.0"</HintPath>
+      <HintPath>"D:\Laci\GitPlayground\FallingSandGame\FallingSandGame\FallingSandGame\libs\Raylib-cs.dll"</HintPath>
+      <HintPath>"D:\Laci\GitPlayground\FallingSandGame\FallingSandGame\FallingSandGame\libs\raylib.dll"</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Raylib-cs" Version="6.0.0" />
   </ItemGroup>
 
 </Project>
