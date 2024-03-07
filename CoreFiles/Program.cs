@@ -8,7 +8,7 @@ using Raylib_cs;
         {
             const int screenWidth = 800;
             const int screenHeight = 600;
-            const int cellSize = 5; // Size of each cell (pixel)
+            const int cellSize = 10; // Size of each cell (pixel)
 
             try
             {
