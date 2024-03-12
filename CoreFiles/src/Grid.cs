@@ -53,21 +53,31 @@ public class Grid
         return y < height - 1 && cells[x, y + 1] == ' ';
     }
 
-    public void Move(int srcX, int srcY, int destX, int destY)
+    public void Move(int srcCol, int srcRow, int destCol, int destRow)
     {
+        ValidateCoordinates(srcCol, srcRow, destCol, destRow);
 
+        cells[srcCol, srcRow] = ' ';
+        cells[destCol, destRow] = currentMaterial!.Symbol;
 
-        // Update cell symbol
-        cells[srcX, srcY] = ' ';
-        cells[destX, destY] = currentMaterial.Symbol;
-
-        // Update cell material information (important for tracking material movement)
-        cellMaterials[new Tuple<int, int>(srcX, srcY)] = null;
-        cellMaterials[new Tuple<int, int>(destX, destY)] = currentMaterial;
-
-
-
+        cellMaterials[CoordToTuple(srcCol, srcRow)] = null;
+        cellMaterials[CoordToTuple(destCol, destRow)] = currentMaterial;
     }
+
+    private void ValidateCoordinates(int srcCol, int srcRow, int destCol, int destRow)
+    {
+        if (!IsValidCell(srcCol, srcRow))
+            throw new ArgumentException($"Invalid src coordinates: {srcCol}, {srcRow}");
+
+        if (!IsValidCell(destCol, destRow))
+            throw new ArgumentException($"Invalid dest coordinates: {destCol}, {destRow}");
+
+        if (currentMaterial == null)
+            throw new NullReferenceException("Current material is null");
+    }
+
+    private Tuple<int, int> CoordToTuple(int col, int row) => new Tuple<int, int>(col, row);
+
 
     public void Roll(int x, int y)
     {

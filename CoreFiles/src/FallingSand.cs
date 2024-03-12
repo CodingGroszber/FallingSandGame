@@ -63,10 +63,17 @@ private void AddMaterial()
     int mouseX = Raylib.GetMouseX() / cellSize;
     int mouseY = Raylib.GetMouseY() / cellSize;
 
-    if (grid.IsValidCell(mouseX, mouseY))
+    if (currentMaterial == null)
     {
-        grid.SetCell(mouseX, mouseY, currentMaterial.Symbol, currentMaterial);
+        throw new NullReferenceException("Current material is null");
     }
+
+    if (!grid.IsValidCell(mouseX, mouseY))
+    {
+        return;
+    }
+
+    grid.SetCell(mouseX, mouseY, currentMaterial.Symbol, currentMaterial);
 }
 
 private void RemoveMaterial()
