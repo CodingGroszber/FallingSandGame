@@ -88,7 +88,7 @@ private void UpdatePhysics()
         for (int y = screenHeight / cellSize - 1; y >= 0; y--)
         {
             IMaterial material = grid.GetCellMaterial(x, y);
-            if (material != null && grid.GetCell(x, y) == material.Symbol)
+            if (material != null && material.Symbol != ' ' && grid.GetCell(x, y) == material.Symbol)
             {
                 material.Update(x, y, grid);
             }
