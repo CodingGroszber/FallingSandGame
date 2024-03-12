@@ -55,8 +55,18 @@ public class Grid
 
     public void Move(int srcX, int srcY, int destX, int destY)
     {
+
+
+        // Update cell symbol
         cells[srcX, srcY] = ' ';
         cells[destX, destY] = currentMaterial.Symbol;
+
+        // Update cell material information (important for tracking material movement)
+        cellMaterials[new Tuple<int, int>(srcX, srcY)] = null;
+        cellMaterials[new Tuple<int, int>(destX, destY)] = currentMaterial;
+
+
+
     }
 
     public void Roll(int x, int y)
@@ -82,22 +92,51 @@ public class Grid
     }
 
     public void Spread(int x, int y)
+{
+    // Prioritize flowing down first
+    if (CanFall(x, y))
     {
-        int leftX = x - 1;
-        int rightX = x + 1;
+        Move(x, y, x, y + 1);
+        return;
+    }
 
-        if (IsValidCell(leftX, y) && cells[leftX, y] == ' ')
+    // Check left neighboring cell (if valid and empty)
+    int leftX = x - 1;
+    if (IsValidCell(leftX, y) && cells[leftX, y] == ' ')
+    {
+        // Check if the cell below the left neighbor is empty (for diagonal flow)
+        if (IsValidCell(leftX, y + 1) && cells[leftX, y + 1] == ' ')
         {
-            Move(x, y, leftX, y);
+            Move(x, y, leftX, y + 1); // Move diagonally down-left
             return;
         }
-
-        if (IsValidCell(rightX, y) && cells[rightX, y] == ' ')
+        else
         {
-            Move(x, y, rightX, y);
+            Move(x, y, leftX, y); // Move left
             return;
         }
     }
+
+    // Check right neighboring cell (if valid and empty)
+    int rightX = x + 1;
+    if (IsValidCell(rightX, y) && cells[rightX, y] == ' ')
+    {
+        // Check if the cell below the right neighbor is empty (for diagonal flow)
+        if (IsValidCell(rightX, y + 1) && cells[rightX, y + 1] == ' ')
+        {
+            Move(x, y, rightX, y + 1); // Move diagonally down-right
+            return;
+        }
+        else
+        {
+            Move(x, y, rightX, y); // Move right
+            return;
+        }
+    }
+
+    // No suitable empty cells found, water remains at the current position
+}
+
 
 
 

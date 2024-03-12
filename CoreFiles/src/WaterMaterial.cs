@@ -6,6 +6,7 @@ class WaterMaterial : LiquidMaterial
 
     public override void Update(int x, int y, Grid grid)
     {
+        //Console.WriteLine("WaterMaterial.Update()");
         if (grid.CanFall(x, y))
         {
             grid.Move(x, y, x, y + 1);

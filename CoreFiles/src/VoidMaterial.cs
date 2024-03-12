@@ -6,6 +6,6 @@ class VoidMaterial : IMaterial
 
     public void Update(int x, int y, Grid grid)
     {
-        // No update logic is needed for void material
+        //Console.WriteLine("VoidMaterial.Update()");
     }
 }

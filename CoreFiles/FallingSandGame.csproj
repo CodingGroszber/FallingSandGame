@@ -9,9 +9,9 @@
 
   <ItemGroup>
     <Reference Include="Raylib-cs">
-      <HintPath>"D:\Laci\GitPlayground\FallingSandGame\CoreFiles\bin\Debug\net6.0"</HintPath>
-      <HintPath>"D:\Laci\GitPlayground\FallingSandGame\CoreFiles\libs\raylib.dll"</HintPath>
-      <HintPath>"D:\Laci\GitPlayground\FallingSandGame\CoreFiles\libs\Raylib-cs.dll"</HintPath>
+      <HintPath>"CoreFiles\bin\Debug\net6.0"</HintPath>
+      <HintPath>"CoreFiles\libs\raylib.dll"</HintPath>
+      <HintPath>"CoreFiles\libs\Raylib-cs.dll"</HintPath>
     </Reference>
   </ItemGroup>
 
