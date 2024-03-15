@@ -13,7 +13,7 @@ class WaterMaterial : LiquidMaterial
         }
         else
         {
-            grid.Spread(x, y);
+            grid.Roll(x, y, true);
         }
     }
 }

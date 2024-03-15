@@ -91,6 +91,18 @@ public class Grid
         }
     }
 
+    public void Roll(int x, int y, bool isLiquid)
+    {
+        int rollDirection = new Random().Next(2); // 0 or 1
+        int newX = x + (rollDirection == 0 ? -1 : 1);
+        if (IsValidCell(newX, y) &&
+         cells[newX, y] == ' ' &&
+         isLiquid)
+        {
+            Move(x, y, newX, y);
+        }
+    }
+
     public bool PileUp(int x, int y, int maxPileHeight)
     {
         if (y >= maxPileHeight && CanFall(x, y))
@@ -101,47 +113,39 @@ public class Grid
         return false;
     }
 
-    public void Spread(int x, int y)
+public void Spread(int x, int y)
 {
-    // Prioritize flowing down first
-    if (CanFall(x, y))
-    {
-        Move(x, y, x, y + 1);
-        return;
-    }
-
     // Check left neighboring cell (if valid and empty)
     int leftX = x - 1;
     if (IsValidCell(leftX, y) && cells[leftX, y] == ' ')
     {
-        // Check if the cell below the left neighbor is empty (for diagonal flow)
-        if (IsValidCell(leftX, y + 1) && cells[leftX, y + 1] == ' ')
-        {
-            Move(x, y, leftX, y + 1); // Move diagonally down-left
-            return;
-        }
-        else
-        {
-            Move(x, y, leftX, y); // Move left
-            return;
-        }
+        Move(x, y, leftX, y); // Move left
+        return;
     }
 
     // Check right neighboring cell (if valid and empty)
     int rightX = x + 1;
     if (IsValidCell(rightX, y) && cells[rightX, y] == ' ')
     {
-        // Check if the cell below the right neighbor is empty (for diagonal flow)
-        if (IsValidCell(rightX, y + 1) && cells[rightX, y + 1] == ' ')
-        {
-            Move(x, y, rightX, y + 1); // Move diagonally down-right
-            return;
-        }
-        else
-        {
-            Move(x, y, rightX, y); // Move right
-            return;
-        }
+        Move(x, y, rightX, y); // Move right
+        return;
+    }
+
+    // Check diagonal movement only if horizontal movement is not possible
+    int leftBelowY = y + 1;
+    int leftBelowX = x - 1;
+    int rightBelowY = y + 1;
+    int rightBelowX = x + 1;
+
+    if (IsValidCell(leftBelowX, leftBelowY) && cells[leftBelowX, leftBelowY] == ' ')
+    {
+        Move(x, y, leftBelowX, leftBelowY); // Move diagonally down-left
+        return;
+    }
+    else if (IsValidCell(rightBelowX, rightBelowY) && cells[rightBelowX, rightBelowY] == ' ')
+    {
+        Move(x, y, rightBelowX, rightBelowY); // Move diagonally down-right
+        return;
     }
 
     // No suitable empty cells found, water remains at the current position
