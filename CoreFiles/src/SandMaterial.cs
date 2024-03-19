@@ -1,23 +1,22 @@
-using  Raylib_cs;
-class SandMaterial : SolidMaterial
+using Raylib_cs;
+using System;
+
+public class SandMaterial : IMaterial
 {
-    public SandMaterial() : base('S', Color.Gold, int.MaxValue) { }
+    public string Name { get; set; }
+    public Color Color { get; set; }
+    public float Density { get; set; }
+    public bool Flammable { get; set; }
+    public float Viscosity { get; set; }
 
-    public override void Update(int x, int y, Grid grid)
+    public void Update()
     {
-        //Console.WriteLine("SandMaterial.Update()");
-        if (grid.PileUp(x, y, maxPileHeight))
-        {
-            return;
-        }
+        
+    }
 
-        if (grid.CanFall(x, y))
-        {
-            grid.Move(x, y, x, y + 1);
-        }
-        else
-        {
-            grid.Roll(x, y);
-        }
+    public void Render()
+    {
+        
     }
 }
+
