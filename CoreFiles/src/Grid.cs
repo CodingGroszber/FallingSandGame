@@ -113,47 +113,6 @@ public class Grid
         return false;
     }
 
-public void Spread(int x, int y)
-{
-    // Check left neighboring cell (if valid and empty)
-    int leftX = x - 1;
-    if (IsValidCell(leftX, y) && cells[leftX, y] == ' ')
-    {
-        Move(x, y, leftX, y); // Move left
-        return;
-    }
-
-    // Check right neighboring cell (if valid and empty)
-    int rightX = x + 1;
-    if (IsValidCell(rightX, y) && cells[rightX, y] == ' ')
-    {
-        Move(x, y, rightX, y); // Move right
-        return;
-    }
-
-    // Check diagonal movement only if horizontal movement is not possible
-    int leftBelowY = y + 1;
-    int leftBelowX = x - 1;
-    int rightBelowY = y + 1;
-    int rightBelowX = x + 1;
-
-    if (IsValidCell(leftBelowX, leftBelowY) && cells[leftBelowX, leftBelowY] == ' ')
-    {
-        Move(x, y, leftBelowX, leftBelowY); // Move diagonally down-left
-        return;
-    }
-    else if (IsValidCell(rightBelowX, rightBelowY) && cells[rightBelowX, rightBelowY] == ' ')
-    {
-        Move(x, y, rightBelowX, rightBelowY); // Move diagonally down-right
-        return;
-    }
-
-    // No suitable empty cells found, water remains at the current position
-}
-
-
-
-
     public bool IsValidCell(int x, int y)
     {
         return x >= 0 && x < width && y >= 0 && y < height;
