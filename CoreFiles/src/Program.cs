@@ -50,58 +50,10 @@ public abstract class Material
 
 protected void PushOutMaterial(int x, int y, Material otherMaterial, Material[,] grid)
 {
-    int newX = x;
-    int newY = y;
-
-    // Find a free space to push the other material to
-    while (grid[newX, newY] != null && (newX != x || newY != y))
-    {
-        // Try to move down first
-        if (newY + 1 < grid.GetLength(1) && grid[newX, newY + 1] == null)
-        {
-            newY++;
-            break;
-        }
-        // If can't move down, try to move left or right
-        else if (newY + 1 < grid.GetLength(1))
-        {
-            int direction = Raylib.GetRandomValue(0, 1) * 2 - 1; // Randomly choose left (-1) or right (1) first
-            for (int i = 0; i < 2; i++)
-            {
-                int newNewX = newX + direction;
-                if (newNewX >= 0 && newNewX < grid.GetLength(0) && grid[newNewX, newY + 1] == null)
-                {
-                    newX = newNewX;
-                    newY++;
-                    break;
-                }
-                direction = -direction; // Switch direction to check the other side
-            }
-        }
-        // If no free space is found, the materials stay in place
-        else
-        {
-            break;
-        }
-    }
-
-    // If a free space is found, swap the materials
-    if (grid[newX, newY] == null)
-    {
-        grid[newX, newY] = otherMaterial;
-        grid[x, y] = this;
-    }
+ // logic required!
 }
 
-
-
-
 }
-
-
-
-
-
 
 
 public class InteractionManager
